@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="MacpuhnTest.ImageViewerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MacpuhnTest"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Focusable="True" Loaded="ImageViewerView_OnLoaded" Background="Gray">
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding ShowCollectionViewCommand}" Key="Escape"/>
+        <KeyBinding Command="{Binding GetNextCommand}" Key="Down"/>
+        <KeyBinding Command="{Binding GetPreviousCommand}" Key="Up"/>
+    </UserControl.InputBindings>
+            <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding CurrentImage.Image}" RenderOptions.BitmapScalingMode="HighQuality" Effect="{Binding BitmapEffect}"/>
+        <Button Grid.Column="1" Grid.Row="0" Height="60" Width="60" Command="{Binding GetPreviousCommand}" Background="Transparent">
+            <StackPanel>
+                <Image Source="/MacpuhnTest;component/Resources/uparrow.png" />
+            </StackPanel>
+        </Button>
+        <Button Content="Blur" Grid.Column="1" Grid.Row="1" Height="40" Width="60" Command="{Binding BlurCommand}" Background="DarkGray" Foreground="White"/>
+        <Button Grid.Column="1" Grid.Row="2" Height="60" Width="60" Command="{Binding GetNextCommand}" Background="Transparent">
+            <StackPanel>
+                <Image Source="/MacpuhnTest;component/Resources/downarrow.png" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

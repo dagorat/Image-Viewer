@@ -1,0 +1,26 @@
+﻿<Window x:Class="MacpuhnTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MacpuhnTest"
+        xmlns:viewModels="clr-namespace:MacpuhnTest.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Macphun Image Viewer" MinHeight="300" MinWidth="450" Height="300" Width="450">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing" >
+            <i:InvokeCommandAction Command="{Binding CloseWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ImageCollectionViewModel}">
+            <local:ImageCollectionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ImageViewerViewModel}">
+            <local:ImageViewerView/>
+        </DataTemplate>
+    </Window.Resources>
+    <ContentControl Content="{Binding DataContext}">
+    </ContentControl>
+</Window>
